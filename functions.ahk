@@ -1,5 +1,10 @@
 ﻿start_process()
 {
+    if (is_active) {
+        MsgBox, 16, Error, Process has already been started., 5
+        return
+    }
+
     if (!interval) {
         set_interval()
     }
@@ -9,11 +14,17 @@
         return
     }
 
+    is_active := true
+
     process()
 }
 
 process()
 {
+    if (!is_active) {
+        return
+    }
+
     WinGet, initial_pid, PID, A
 
     for index, event in event_list {
@@ -29,6 +40,12 @@ process()
 
 stop_process()
 {
+    if (!is_active) {
+        MsgBox, 16, Error, Process didn't start., 5
+        return
+    }
+
+    is_active := false
     SetTimer process, Off
     MsgBox, 0, Confirm, Process was stopped., 5
 }
