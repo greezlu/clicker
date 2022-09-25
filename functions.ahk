@@ -123,6 +123,4 @@ remove_event()
     }
 
     MsgBox, 16, Error, Event PID: %current_pid% is not in event list., 5
-
-    return
 }
