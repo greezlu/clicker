@@ -40,7 +40,7 @@ stop_process()
 
 set_interval()
 {
-	InputBox, input_interval, Inteval, Please enter interval in seconds.
+	InputBox, input_interval, Interval, Please enter interval in seconds.
 	
 	if (input_interval) {
 		interval := input_interval * 1000
