@@ -1,6 +1,6 @@
 # Clicker
 
-Simple clicker script. Created and compiled using [AutoHotKey](https://www.autohotkey.com/).
+Simple clicker script. Created and compiled using [AutoHotkey](https://www.autohotkey.com/).
 
 [Download](https://github.com/greezlu/clicker/releases) release for windows.
 
@@ -14,18 +14,24 @@ Creating list of events attached to specific windows.
 - `Ctrl + 4` Add mouse click event for current window. 
 - `Ctrl + 5` Add keyboard event for current window. 
 - `Ctrl + 0` Remove current window from event list. 
+- `Ctrl + q` Terminate current application. 
 
 ## Additional
+- Script is requiring admin privileges.
 - List of special keys can be found [here](https://www.autohotkey.com/docs/commands/Send.htm#keynames).
-- If interval wasn't set before action call, it will be prompted [automatically](https://github.com/greezlu/clicker/blob/master/functions.ahk#L4).
-- [SetKeyDelay](https://www.autohotkey.com/docs/commands/SetKeyDelay.htm) is [set](https://github.com/greezlu/clicker/blob/master/config.ahk#L4) to 100.
-- Interval between actions was [modified](https://github.com/greezlu/clicker/blob/master/functions.ahk#L31) to slightly differ each time for 1%.
-- Mouse click [happens](https://github.com/greezlu/clicker/blob/master/class/mouse_click_action.ahk#L11) in random place inside given radius. But closer to center.
-- Mouse click is [set](https://github.com/greezlu/clicker/blob/master/class/mouse_click_action.ahk#L17) to left-click only.
+- If interval wasn't set before action call, it will be prompted automatically.
+- [SetKeyDelay](https://www.autohotkey.com/docs/commands/SetKeyDelay.htm) is set to 50.
+- Interval between actions was modified to slightly differ each time for 1%.
+- Mouse click happens in random place inside given radius. But closer to center.
+- Mouse click is set to left-click only.
+- Actions will be activated in the order they were added.
+- One action for one window (process).
 
 ## Compilation
 Executable release was compiled using default [compiler](https://www.autohotkey.com/docs/Scripts.htm#ahk2exe).
-Feel free to compile by yourself. Initial point is [index.ahk](https://github.com/greezlu/clicker/blob/master/index.ahk).
+Feel free to compile by yourself. Initial point is `index.ahk`.
+
+You also need to disable defender to use executable as there is no signature provided by compiler.  
 
 ## Scenario example for keyboard click
 1. Open `ahk.exe`.
