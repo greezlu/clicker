@@ -9,8 +9,8 @@
         set_interval()
     }
 
-    if (!event_list.Length()) {
-        MsgBox, 16, Error, Empty event list., 5
+    if (!action_list.Length()) {
+        MsgBox, 16, Error, Empty action list., 5
         return
     }
 
@@ -27,9 +27,9 @@ process()
 
     WinGet, initial_pid, PID, A
 
-    for index, event in event_list {
-        WinActivate, % "ahk_pid" event.pid
-        event.click()
+    for index, action in action_list {
+        WinActivate, % "ahk_pid" action.pid
+        action.click()
     }
 
     WinActivate, % "ahk_pid" initial_pid
@@ -61,35 +61,35 @@ set_interval()
     interval := input_interval * 1000
 }
 
-add_event(event_type)
+add_action(action_type)
 {
     WinGet, current_pid, PID, A
 
-    for index, event in event_list {
-        if (event.pid = current_pid) {
-            MsgBox, 16, Error, Event PID %current_pid% has already been added., 5
+    for index, action in action_list {
+        if (action.pid = current_pid) {
+            MsgBox, 16, Error, Action PID %current_pid% has already been added., 5
             return
         }
     }
 
-    if (event_type = "mouse") {
-        action := get_mouse_event(current_pid)
-    } else if (event_type = "keyboard") {
-        action := get_keyboard_event(current_pid)
+    if (action_type = "mouse") {
+        action := get_mouse_action(current_pid)
+    } else if (action_type = "keyboard") {
+        action := get_keyboard_action(current_pid)
     } else {
         MsgBox, 16, Error, Internal error., 5
         return
     }
 
     if (isObject(action)) {
-        event_list.Push(action)
-        MsgBox, Event PID: %current_pid% was added to list.
+        action_list.Push(action)
+        MsgBox, Action PID: %current_pid% was added to list.
     } else {
-        MsgBox, Event PID: %current_pid% was not added.
+        MsgBox, Action PID: %current_pid% was not added.
     }
 }
 
-get_mouse_event(current_pid)
+get_mouse_action(current_pid)
 {
     InputBox, x_coord, [X] Coordinate, Please enter [X] coordinate.
 
@@ -112,7 +112,7 @@ get_mouse_event(current_pid)
     Return, new MouseClickAction(current_pid, x_coord, y_coord, radius)
 }
 
-get_keyboard_event(current_pid)
+get_keyboard_action(current_pid)
 {
     InputBox, button, Radius, Please enter button.
 
@@ -123,29 +123,29 @@ get_keyboard_event(current_pid)
     Return, new ButtonClickAction(current_pid, button)
 }
 
-remove_event()
+remove_action()
 {
     WinGet, current_pid, PID, A
 
     remove_index := false
     remove_pid := false
 
-    for index, event in event_list {
-        if (event.pid = current_pid) {
+    for index, action in action_list {
+        if (action.pid = current_pid) {
             remove_index := index
-            remove_pid := event.pid
+            remove_pid := action.pid
             break
         }
     }
 
     if (remove_index = false || remove_pid = false) {
-        MsgBox, 16, Error, Event PID: %current_pid% is not in event list., 5
+        MsgBox, 16, Error, Action PID: %current_pid% is not in action list., 5
     } else {
-        event_list.RemoveAt(remove_index)
-        MsgBox, Event PID: %remove_pid% was removed from list.
+        action_list.RemoveAt(remove_index)
+        MsgBox, Action PID: %remove_pid% was removed from list.
     }
 
-    if (!event_list.Length() && is_active) {
+    if (!action_list.Length() && is_active) {
         stop_process()
     }
 }

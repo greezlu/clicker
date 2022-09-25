@@ -11,15 +11,15 @@ set_interval()
 return
 
 ^4::
-add_event("mouse")
+add_action("mouse")
 return
 
 ^5::
-add_event("keyboard")
+add_action("keyboard")
 return
 
 ^0::
-remove_event()
+remove_action()
 return
 
 ^q::

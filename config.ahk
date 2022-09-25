@@ -7,7 +7,7 @@ SetKeyDelay, 50,,
 
 global config_path
 global log_path
-global event_list
+global action_list
 global interval
 global mouse_speed
 global logger

@@ -5,15 +5,15 @@ Simple clicker script. Created and compiled using [AutoHotkey](https://www.autoh
 [Download](https://github.com/greezlu/clicker/releases) release for windows.
 
 ## Main Functionalities
-Creating list of events attached to specific windows.
+Creating list of action attached to specific windows.
 
 ## Shortcuts
-- `Ctrl + 1` Start processing event list. 
-- `Ctrl + 2` Stop processing event list. 
+- `Ctrl + 1` Start processing action list. 
+- `Ctrl + 2` Stop processing action list. 
 - `Ctrl + 3` Set interval in seconds. 
-- `Ctrl + 4` Add mouse click event for current window. 
-- `Ctrl + 5` Add keyboard event for current window. 
-- `Ctrl + 0` Remove current window from event list. 
+- `Ctrl + 4` Add mouse click action for current window. 
+- `Ctrl + 5` Add keyboard action for current window. 
+- `Ctrl + 0` Remove current window from action list. 
 - `Ctrl + q` Terminate current application. 
 
 ## Additional

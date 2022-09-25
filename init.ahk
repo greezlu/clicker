@@ -6,6 +6,6 @@ IniRead, mouse_speed, %config_path%, General, mouse_speed
 
 logger := new Logger()
 
-event_list := []
+action_list := []
 
 is_active := false
