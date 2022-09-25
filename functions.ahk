@@ -64,6 +64,7 @@ add_event(event_type)
         action := get_keyboard_event(current_pid)
     } else {
         MsgBox, 16, Error, Internal error., 5
+        return
     }
 
     if (action) {
