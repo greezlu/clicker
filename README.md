@@ -39,7 +39,11 @@ Creating list of action attached to specific windows.
 Executable release was compiled using default [compiler](https://www.autohotkey.com/docs/Scripts.htm#ahk2exe).
 Feel free to compile by yourself. Initial point is `index.ahk`.
 
-You also need to disable defender to use executable as there is no signature provided by compiler.  
+You also need to disable defender to use executable as there is no signature provided by compiler.
+
+**Example for CLI compilation:**
+
+    Ahk2Exe.exe /in index.ahk /out ahk /icon icon.ico
 
 ## Scenario example for keyboard click
 1. Open `ahk.exe`.
