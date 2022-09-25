@@ -27,6 +27,12 @@ Creating list of action attached to specific windows.
 - Actions will be activated in the order they were added.
 - One action for one window (process).
 
+## Terminology
+- **Process**: Infinite loop of calls to every registered action.
+- **Action**: Registered mouse click or keyboard buttons.
+- **Action list**: List of registered actions sorted by added time.
+- **Registration**: Adding new record to action list.
+
 ## Compilation
 Executable release was compiled using default [compiler](https://www.autohotkey.com/docs/Scripts.htm#ahk2exe).
 Feel free to compile by yourself. Initial point is `index.ahk`.
