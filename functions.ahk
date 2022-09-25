@@ -4,11 +4,6 @@
         set_interval()
     }
 
-    if (!interval) {
-        MsgBox, 16, Error, Interval was not set., 5
-        return
-    }
-
     if (!event_list.Length()) {
         MsgBox, 16, Error, Empty event list., 5
         return
