@@ -61,6 +61,16 @@ set_interval()
     interval := input_interval * 1000
 }
 
+current_window_info()
+{
+    WinGet, pid, PID , A
+    WinGet, process_name, ProcessName , A
+
+    data := "PID: " . pid . " | " . process_name
+
+    MsgBox, 0, Current window, % data
+}
+
 show_action_list()
 {
     if (!action_list.Length()) {

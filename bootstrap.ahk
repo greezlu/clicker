@@ -18,6 +18,10 @@ return
 add_action("keyboard")
 return
 
+^8::
+current_window_info()
+return
+
 ^9::
 show_action_list()
 return
