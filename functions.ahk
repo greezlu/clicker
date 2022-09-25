@@ -42,9 +42,11 @@ set_interval()
 {
     InputBox, input_interval, Interval, Please enter interval in seconds.
 
-    if (input_interval) {
-        interval := input_interval * 1000
+    if (input_interval is not integer) {
+        IniRead, default_interval, %config_path%, General, default_interval_sec
     }
+
+    interval := input_interval * 1000
 }
 
 add_event(event_type)
