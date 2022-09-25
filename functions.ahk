@@ -61,6 +61,22 @@ set_interval()
     interval := input_interval * 1000
 }
 
+show_action_list()
+{
+    if (!action_list.Length()) {
+        MsgBox, 0, Confirm, Empty action list., 5
+        return
+    }
+
+    data := ""
+
+    for index, action in action_list {
+        data .= "PID: " . action.pid . " | " . action.process_name . " | " . action.action_name . "`n"
+    }
+
+    MsgBox, 0, Action list, % data
+}
+
 add_action(action_type)
 {
     WinGet, current_pid, PID, A

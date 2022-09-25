@@ -18,6 +18,10 @@ return
 add_action("keyboard")
 return
 
+^9::
+show_action_list()
+return
+
 ^0::
 remove_action()
 return

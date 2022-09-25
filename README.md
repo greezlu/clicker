@@ -13,6 +13,7 @@ Creating list of action attached to specific windows.
 - `Ctrl + 3` Set interval in seconds. 
 - `Ctrl + 4` Add mouse click action for current window. 
 - `Ctrl + 5` Add keyboard action for current window. 
+- `Ctrl + 9` Show current action list.
 - `Ctrl + 0` Remove current window from action list. 
 - `Ctrl + q` Terminate current application. 
 
