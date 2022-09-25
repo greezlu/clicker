@@ -81,7 +81,7 @@ add_event(event_type)
         return
     }
 
-    if (action) {
+    if (isObject(action)) {
         event_list.Push(action)
         MsgBox, Event PID: %current_pid% was added to list.
     } else {
