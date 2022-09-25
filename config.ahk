@@ -11,3 +11,4 @@ global event_list
 global interval
 global mouse_speed
 global logger
+global is_active
