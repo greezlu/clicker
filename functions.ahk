@@ -89,7 +89,7 @@ get_mouse_event(current_pid)
     InputBox, radius, Radius, Please enter radius.
 
     if (!radius) {
-        radius := 0
+        IniRead, radius, %config_path%, General, default_radius
     }
 
     Return, new MouseClickAction(current_pid, x_coord, y_coord, radius)
