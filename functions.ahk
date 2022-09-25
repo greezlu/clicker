@@ -38,7 +38,7 @@ set_interval()
     InputBox, input_interval, Interval, Please enter interval in seconds.
 
     if (input_interval is not integer) {
-        IniRead, default_interval, %config_path%, General, default_interval_sec
+        IniRead, input_interval, %config_path%, General, default_interval_sec
     }
 
     interval := input_interval * 1000
