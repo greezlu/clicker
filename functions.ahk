@@ -29,7 +29,7 @@ process()
 	WinActivate, % "ahk_pid" initial_pid
 	
 	Random, interval_random, % interval * -0.01, % interval * 0.01
-	SetTimer, process, % Round(interval + interval_random)
+	SetTimer, process, % -Round(interval + interval_random)
 }
 
 stop_process()
