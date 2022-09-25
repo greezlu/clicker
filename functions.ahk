@@ -127,15 +127,25 @@ remove_event()
 {
     WinGet, current_pid, PID, A
 
-    for index, event in event_list {
-        event_pid := event.pid
+    remove_index := false
+    remove_pid := false
 
-        if (event_pid = current_pid) {
-            event_list.RemoveAt(index)
-            MsgBox, Event PID: %event_pid% was removed from list.
-            return
+    for index, event in event_list {
+        if (event.pid = current_pid) {
+            remove_index := index
+            remove_pid := event.pid
+            break
         }
     }
 
-    MsgBox, 16, Error, Event PID: %current_pid% is not in event list., 5
+    if (remove_index = false || remove_pid = false) {
+        MsgBox, 16, Error, Event PID: %current_pid% is not in event list., 5
+    } else {
+        event_list.RemoveAt(remove_index)
+        MsgBox, Event PID: %remove_pid% was removed from list.
+    }
+
+    if (!event_list.Length() && is_active) {
+        stop_process()
+    }
 }
