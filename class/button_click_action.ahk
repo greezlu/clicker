@@ -1,13 +1,13 @@
 ﻿class ButtonClickAction
 {
-	__New(pid, button)
+    __New(pid, button)
     {
-		this.button := button
-		this.pid := pid
+        this.button := button
+        this.pid := pid
     }
-	
-	click()
-	{
-		Send, % this.button
-	}
+
+    click()
+    {
+        Send, % this.button
+    }
 }

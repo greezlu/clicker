@@ -2,7 +2,7 @@
 #Include polyfill.ahk
 
 if (!A_IsAdmin) {
-	restart()
+    restart()
 }
 
 #Include class.ahk

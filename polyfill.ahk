@@ -1,24 +1,24 @@
 ﻿restart()
 {
-	try
+    try
     {
-		if (A_IsCompiled) {
+        if (A_IsCompiled) {
             Run *RunAs "%A_ScriptFullPath%" /restart
-		} else {
+        } else {
             Run *RunAs "%A_AhkPath%" /restart "%A_ScriptFullPath%"
-		}
+        }
     }
-	
+
     ExitApp
 }
 
 target_random(min, max)
 {
-	target := (min + max) / 2
-	
-	Random, lower, min, target
-	Random, upper, target, max
-	Random, middle, lower, upper
-	
-	Return, middle
+    target := (min + max) / 2
+
+    Random, lower, min, target
+    Random, upper, target, max
+    Random, middle, lower, upper
+
+    Return, middle
 }
