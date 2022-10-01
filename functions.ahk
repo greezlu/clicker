@@ -26,10 +26,12 @@ process()
     }
 
     WinGet, initial_pid, PID, A
+    after_action_sleep := target_random(0, after_action_max_sleep)
 
     for index, action in action_list {
         WinActivate, % "ahk_pid" action.pid
         action.click()
+        Sleep, after_action_sleep
     }
 
     WinActivate, % "ahk_pid" initial_pid
