@@ -9,6 +9,7 @@ global config_path
 global log_path
 global action_list
 global interval
+global after_action_max_sleep
 global mouse_speed
 global logger
 global is_active
