@@ -140,7 +140,7 @@ get_mouse_action(current_pid)
 
 get_keyboard_action(current_pid)
 {
-    InputBox, button, Radius, Please enter button.
+    InputBox, button, Confirm, Please enter button.
 
     if (!button) {
         return
