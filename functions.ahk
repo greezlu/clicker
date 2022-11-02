@@ -29,7 +29,14 @@ process()
     after_action_sleep := target_random(0, after_action_max_sleep)
 
     for index, action in action_list {
-        WinActivate, % "ahk_pid" action.pid
+        action_pid := action.pid
+
+        if (!WinExist("ahk_pid" action_pid)) {
+            remove_action(action_pid)
+            continue
+        }
+
+        WinActivate, % "ahk_pid" action_pid
         action.click()
         Sleep, after_action_sleep
     }
@@ -151,15 +158,17 @@ get_keyboard_action(current_pid)
     Return, new ButtonClickAction(current_pid, button)
 }
 
-remove_action()
+remove_action(target_pid := 0)
 {
-    WinGet, current_pid, PID, A
+    if (target_pid = 0) {
+        WinGet, target_pid, PID, A
+    }
 
     remove_index := false
     remove_pid := false
 
     for index, action in action_list {
-        if (action.pid = current_pid) {
+        if (action.pid = target_pid) {
             remove_index := index
             remove_pid := action.pid
             break
@@ -167,10 +176,10 @@ remove_action()
     }
 
     if (remove_index = false || remove_pid = false) {
-        MsgBox, 16, Error, Action PID: %current_pid% is not in action list., 5
+        MsgBox, 16, Error, Action PID: %target_pid% is not in action list., 5
     } else {
         action_list.RemoveAt(remove_index)
-        MsgBox, Action PID: %remove_pid% was removed from list.
+        MsgBox, Action PID: %target_pid% was removed from list.
     }
 
     if (!action_list.Length() && is_active) {
