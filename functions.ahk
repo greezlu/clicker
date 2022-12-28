@@ -63,9 +63,8 @@ set_interval()
 {
     InputBox, input_interval, Interval, Please enter interval in seconds.
 
-    if (input_interval is not integer) {
-        IniRead, input_interval, %config_path%, General, default_interval_sec
-    }
+    if input_interval is not integer
+        input_interval := default_interval
 
     interval := input_interval * 1000
 }
@@ -141,7 +140,7 @@ get_mouse_action(current_pid)
     InputBox, radius, Radius, Please enter radius.
 
     if (!radius) {
-        IniRead, radius, %config_path%, General, default_radius
+        radius := default_radius
     }
 
     Return, new MouseClickAction(current_pid, x_coord, y_coord, radius)

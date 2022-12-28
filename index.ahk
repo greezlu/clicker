@@ -6,6 +6,5 @@ if (!A_IsAdmin) {
 }
 
 #Include class.ahk
-#Include init.ahk
 #Include functions.ahk
 #Include bootstrap.ahk
