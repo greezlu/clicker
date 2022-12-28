@@ -4,7 +4,6 @@ SendMode Event ; Recommended for new scripts due to its superior speed and relia
 SetKeyDelay, 50,,
 
 global config_path
-global log_path
 global action_list
 global interval
 global after_action_max_sleep
