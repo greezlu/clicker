@@ -1,11 +1,11 @@
 class Command extends BaseControl
 {
-	__New()
+    __New()
     {
         this.actionList := ActionList()
     }
 
     execute()
-	{
-	}
+    {
+    }
 }

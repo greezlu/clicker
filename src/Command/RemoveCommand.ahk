@@ -1,7 +1,7 @@
 class RemoveCommand extends Command
 {
     execute()
-	{
-		this.actionList.remove(this.pid())
-	}
+    {
+        this.actionList.remove(this.pid())
+    }
 }

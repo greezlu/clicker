@@ -1,7 +1,7 @@
 class StopCommand extends Command
 {
     execute()
-	{
-		this.actionList.disable()
-	}
+    {
+        this.actionList.disable()
+    }
 }

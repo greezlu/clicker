@@ -1,63 +1,63 @@
 class Mediator
 {
-	static startCommand := StartCommand()
-	static stopCommand := StopCommand()
-	static mouseLeftClickCommand := MouseLeftClickCommand()
-	static keyboardClickCommand := KeyboardClickCommand()
-	static intervalCommand := IntervalCommand()
-	static radiusCommand := RadiusCommand()
-	static windowInfoCommand := WindowInfoCommand()
-	static actionListCommand := ActionListCommand()
-	static removeCommand := RemoveCommand()
-	static exitCommand := ExitCommand()
+    static startCommand := StartCommand()
+    static stopCommand := StopCommand()
+    static mouseLeftClickCommand := MouseLeftClickCommand()
+    static keyboardClickCommand := KeyboardClickCommand()
+    static intervalCommand := IntervalCommand()
+    static radiusCommand := RadiusCommand()
+    static windowInfoCommand := WindowInfoCommand()
+    static actionListCommand := ActionListCommand()
+    static removeCommand := RemoveCommand()
+    static exitCommand := ExitCommand()
 
     static start()
-	{
-		this.startCommand.execute()
-	}
+    {
+        this.startCommand.execute()
+    }
 
     static stop()
-	{
-		this.stopCommand.execute()
-	}
+    {
+        this.stopCommand.execute()
+    }
 
     static addMouseLeftClick()
-	{
-		this.mouseLeftClickCommand.execute()
-	}
+    {
+        this.mouseLeftClickCommand.execute()
+    }
 
     static addKeyboardClick()
-	{
-		this.keyboardClickCommand.execute()
-	}
+    {
+        this.keyboardClickCommand.execute()
+    }
 
     static askInterval()
-	{
-		this.intervalCommand.execute()
-	}
+    {
+        this.intervalCommand.execute()
+    }
 
     static askRadius()
-	{
-		this.radiusCommand.execute()
-	}
+    {
+        this.radiusCommand.execute()
+    }
 
     static showWindowInfo()
-	{
-		this.windowInfoCommand.execute()
-	}
+    {
+        this.windowInfoCommand.execute()
+    }
 
     static showActionList()
-	{
-		this.actionListCommand.execute()
-	}
+    {
+        this.actionListCommand.execute()
+    }
 
     static remove()
-	{
-		this.removeCommand.execute()
-	}
+    {
+        this.removeCommand.execute()
+    }
 
     static exit()
-	{
-		this.exitCommand.execute()
-	}
+    {
+        this.exitCommand.execute()
+    }
 }

@@ -1,95 +1,95 @@
 class ActionList extends BaseControl
 {
-	static list := Map()
-	static active := false
+    static list := Map()
+    static active := false
 
     enable()
-	{
-		if (ActionList.active) {
-			this.error("Process has already been started.")
-			return
-		}
+    {
+        if (ActionList.active) {
+            this.error("Process has already been started.")
+            return
+        }
 
-		if (!ActionList.list.Count) {
-			this.error("Empty action list.")
-			return
-		}
+        if (!ActionList.list.Count) {
+            this.error("Empty action list.")
+            return
+        }
 
-		this.sanitize()
+        this.sanitize()
 
-		for pid, pid_action_list in ActionList.list {
-			for action_index, action in pid_action_list {
-				action.tick()
-				action.start()
-			}
-		}
+        ActionList.active := true
 
-		ActionList.active := true
-	}
+        for pid, pid_action_list in ActionList.list {
+            for action_index, action in pid_action_list {
+                action.tick()
+                action.start()
+            }
+        }
+    }
 
-	disable()
-	{
-		if (!ActionList.active) {
-			this.error("Process is not started.")
-			return
-		}
-		
-		for pid, pid_action_list in ActionList.list {
-			for action in pid_action_list {
-				action.stop()
-			}
-		}
+    disable()
+    {
+        if (!ActionList.active) {
+            this.error("Process is not started.")
+            return
+        }
 
-		this.sanitize()
+        for pid, pid_action_list in ActionList.list {
+            for action in pid_action_list {
+                action.stop()
+            }
+        }
 
-		this.info("Process was stopped.")
+        this.sanitize()
 
-		ActionList.active := false
-	}
+        this.info("Process was stopped.")
 
-	add(pid, name, action)
-	{
-		list := ActionList.list.Has(pid) ? ActionList.list.Get(pid) : []
-		list.Push(action)
+        ActionList.active := false
+    }
 
-		ActionList.list.Set(pid, list)
-		
-		this.info(Format("Action PID: {1} | {2} was added to list.", pid, name))
-	}
+    add(pid, name, action)
+    {
+        list := ActionList.list.Has(pid) ? ActionList.list.Get(pid) : []
+        list.Push(action)
 
-	remove(pid, index := false)
-	{
-		if (!ActionList.list.Count) {
-			this.error("Empty action list.")
-			return
-		}
+        ActionList.list.Set(pid, list)
 
-		if (!ActionList.list.Has(pid)) {
-			this.error(Format("Action PID: {1} not found in list.", pid))
-			return
-		}
+        this.info(Format("Action PID: {1} | {2} was added to list.", pid, name))
+    }
 
-		if (index = false) {
-			ActionList.list.Delete(pid)
-		} else if (this.list.Get(pid).Has(index)) {
-			ActionList.list.Get(pid).RemoveAt(index)
-		}
+    remove(pid, index := false)
+    {
+        if (!ActionList.list.Count) {
+            this.error("Empty action list.")
+            return
+        }
 
-		this.sanitize()
+        if (!ActionList.list.Has(pid)) {
+            this.error(Format("Action PID: {1} not found in list.", pid))
+            return
+        }
 
-		if (index = false) {
-			this.info(Format("Actions with PID: {1} were removed from list.", pid))
-		} else {
-			this.info(Format("Action PID: {1} | Index: {2} was removed from list.", pid, index))
-		}
-	}
+        if (index = false) {
+            ActionList.list.Delete(pid)
+        } else if (this.list.Get(pid).Has(index)) {
+            ActionList.list.Get(pid).RemoveAt(index)
+        }
 
-	sanitize()
-	{
-		for pid, pid_action_list in ActionList.list {
-			if (!this.exist(pid) || !pid_action_list.Length) {
-				this.remove(pid)
-			}
-		}
-	}
+        this.sanitize()
+
+        if (index = false) {
+            this.info(Format("Actions with PID: {1} were removed from list.", pid))
+        } else {
+            this.info(Format("Action PID: {1} | Index: {2} was removed from list.", pid, index))
+        }
+    }
+
+    sanitize()
+    {
+        for pid, pid_action_list in ActionList.list {
+            if (!this.exist(pid) || !pid_action_list.Length) {
+                this.remove(pid)
+            }
+        }
+    }
 }

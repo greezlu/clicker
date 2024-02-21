@@ -2,18 +2,18 @@
 {
     __New(button, pid, name)
     {
-		super.__New(pid, name)
+        super.__New(pid, name)
         this.button := button
     }
 
     click()
     {
         Send this.button
-		super.click()
+        super.click()
     }
-	
-	details()
-	{
-		return Format("PID: {1} | {2} | keyboard", this.actionPid, this.actionName)
-	}
+
+    details()
+    {
+        return Format("PID: {1} | {2} | keyboard", this.actionPid, this.actionName)
+    }
 }
