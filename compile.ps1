@@ -2,14 +2,15 @@ Write-Host "Starting ..."
 
 $ahk = "AutoHotkey\Compiler\Ahk2Exe.exe"
 $index = ".\index.ahk"
-$out = "ahk_v1_5"
-$icon = ".\icon.ico"
+$base = "AutoHotkey\v2\AutoHotkey64.exe"
+$out = "ahk_v1_6"
+$icon = ".\media\icon.ico"
 
 if (Test-Path -Path ".\$out.exe" -PathType Leaf) {
     Write-Host "Output file already exists ..." -ForegroundColor Black -BackgroundColor White
 } else {
     Start-Process -FilePath "$env:PROGRAMFILES\$ahk"`
-        -ArgumentList "/in $index /out $out /icon $icon"`
+        -ArgumentList "/in $index /out $out /icon $icon /base `"$env:PROGRAMFILES\$base`""`
         -PassThru `
         -Wait
 }

@@ -1,10 +1,3 @@
-﻿#Include config.ahk
-#Include polyfill.ahk
-
-if (!A_IsAdmin) {
-    restart()
-}
-
-#Include class.ahk
-#Include functions.ahk
-#Include bootstrap.ahk
+﻿#Include src\config.ahk
+#Include src\autoload.ahk
+#Include src\bootstrap.ahk
