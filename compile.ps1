@@ -3,7 +3,7 @@ Write-Host "Starting ..."
 $ahk = "AutoHotkey\Compiler\Ahk2Exe.exe"
 $index = ".\index.ahk"
 $base = "AutoHotkey\v2\AutoHotkey64.exe"
-$out = "ahk_v1_6"
+$out = "ahk_v1_7"
 $icon = ".\media\icon.ico"
 
 if (Test-Path -Path ".\$out.exe" -PathType Leaf) {
